@@ -1,19 +1,19 @@
 package nerdschool;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class ControlUnit {
+  private final ConsoleSensorViewer csv;
+private final FakseSensorPoller fsp;
+  public ControlUnit(ConsoleSensorViewer consoleSensorViewer, FakseSensorPoller fakseSensorPoller) {
 
-  private final ArrayList<Sensor> sensors;
-  private ConsoleSensorViewer csv;
-
-  public ControlUnit(ArrayList<Sensor> sensors) {
-    this.sensors = sensors;
-    csv = new ConsoleSensorViewer();
+    csv = consoleSensorViewer;
+    fsp = fakseSensorPoller;
   }
 
   public void pollSensors() {
-    csv.displayTriggeredSensors(sensors);
+    ArrayList<Sensor> triggeredSensors = fsp.pollSensors();
+    csv.displayTriggeredSensors(triggeredSensors);
   }
 }

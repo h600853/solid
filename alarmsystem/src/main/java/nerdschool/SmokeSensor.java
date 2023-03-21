@@ -1,12 +1,12 @@
 package nerdschool;
 
 
-public class SmokeSensor implements Sensor {
+public class SmokeSensor implements Sensor, BatteryDrivenSensor {
 
   private int battery;
   private int counter;
-  private String location;
-  private String type;
+  private final String location;
+  private final String type;
 
   public SmokeSensor(String location, String type) {
     this.location = location;

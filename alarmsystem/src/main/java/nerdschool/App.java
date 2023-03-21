@@ -1,7 +1,6 @@
 package nerdschool;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -11,7 +10,11 @@ public class App {
     sensors.add(new FireSensor("DataLab","FireSensor"));
     sensors.add(new SmokeSensor("Hall1", "SmokeSensor"));
 
-    ControlUnit controlUnit = new ControlUnit(sensors);
+    ConsoleSensorViewer csv = new ConsoleSensorViewer();
+    FakseSensorPoller fsp = new FakseSensorPoller(sensors);
+
+    ControlUnit controlUnit = new ControlUnit(csv,fsp);
+    SecurityControlUnit scu = new SecurityControlUnit(csv, fsp);
 
     Scanner scanner = new Scanner(System.in);
     String input = "";

@@ -1,19 +1,12 @@
 package nerdschool;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class ConsoleSensorViewer implements SensorViewer{
 
   @Override
-  public void displayTriggeredSensors(ArrayList<Sensor> sensors) {
-    List<Sensor> triggeredSensors = new ArrayList<>();
-
-    for (Sensor sensor : sensors) {
-      if (sensor.isTriggered()) {
-        triggeredSensors.add(sensor);
-      }
-    }
+  public void displayTriggeredSensors(ArrayList<Sensor> triggeredSensors) {
 
     if (triggeredSensors.isEmpty()) {
       System.out.println("No sensors were triggered");
