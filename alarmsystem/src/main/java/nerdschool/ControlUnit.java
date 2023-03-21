@@ -6,28 +6,14 @@ import java.util.List;
 public class ControlUnit {
 
   private final ArrayList<Sensor> sensors;
+  private ConsoleSensorViewer csv;
 
-  public ControlUnit() {
-    this.sensors = new ArrayList<>();
-    sensors.add(new FireSensor());
-    sensors.add(new SmokeSensor());
+  public ControlUnit(ArrayList<Sensor> sensors) {
+    this.sensors = sensors;
+    csv = new ConsoleSensorViewer();
   }
 
   public void pollSensors() {
-    List<Sensor> triggeredSensors = new ArrayList<>();
-
-    for (Sensor sensor : sensors) {
-      if (sensor.isTriggered()) {
-        triggeredSensors.add(sensor);
-      }
-    }
-
-    if (triggeredSensors.isEmpty()) {
-      System.out.println("No sensors were triggered");
-    } else {
-      for (Sensor sensor: triggeredSensors) {
-        System.out.printf("A %s sensor was triggered at %s%n", sensor.getSensorType(), sensor.getLocation());
-      }
-    }
+    csv.displayTriggeredSensors(sensors);
   }
 }
